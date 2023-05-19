@@ -1,0 +1,6 @@
+flutter_native_splash:
+  image: assets/animations/splach_screen_loading.json
+  color: "FFFFfF"
+  fill: true
+  android: true
+  ios: true
