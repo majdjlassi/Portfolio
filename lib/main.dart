@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:portfolio/utils/AppColors.dart';
-import '';
+import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/screens/home_screen.dart';
 import 'package:portfolio/screens/splash_screen.dart';
 import 'package:portfolio/utils/routes.dart';
@@ -97,7 +96,6 @@ class MyApp extends StatelessWidget {
           home: child,
           routes: {
             Routes.home: (context) => const HomeScreen(),
-            // Define other routes
           },
         );
       },
