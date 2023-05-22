@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:portfolio/screens/main_page.dart';
 import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/screens/home_screen.dart';
 import 'package:portfolio/screens/splash_screen.dart';
 import 'package:portfolio/utils/routes.dart';
 
@@ -32,19 +32,19 @@ class MyApp extends StatelessWidget {
             textTheme: TextTheme(
               displayLarge: TextStyle(
                 fontSize: 57.sp,
-                color: AppColors.black[600],
-                fontWeight: FontWeight.bold,
+                color: AppColors.black,
+                fontWeight: FontWeight.w900,
               ),
               displayMedium: TextStyle(
                 fontSize: 45.sp,
                 color: AppColors.black[600],
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.bold,
               ),
               displaySmall: TextStyle(
                 fontSize: 36.sp,
                 color: AppColors.black[600],
                 wordSpacing: 1.5,
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w600,
               ),
               headlineLarge: TextStyle(
                 fontSize: 32.sp,
@@ -54,27 +54,25 @@ class MyApp extends StatelessWidget {
               headlineMedium: TextStyle(
                 fontSize: 28.sp,
                 color: AppColors.black[600],
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.bold,
               ),
               headlineSmall: TextStyle(
                 fontSize: 24.sp,
-                color: AppColors.black[600],
-                fontWeight: FontWeight.w400,
+                letterSpacing: 4.0,
+                color: AppColors.black,
+                fontWeight: FontWeight.bold,
               ),
               labelLarge: TextStyle(
                 fontSize: 14.sp,
                 color: AppColors.black[600],
-                fontWeight: FontWeight.w700,
               ),
               labelMedium: TextStyle(
                 fontSize: 12.sp,
                 color: AppColors.black[600],
-                fontWeight: FontWeight.w600,
               ),
               labelSmall: TextStyle(
                 fontSize: 11.sp,
                 color: AppColors.black[600],
-                fontWeight: FontWeight.w500,
               ),
               bodyLarge: TextStyle(
                 fontSize: 16.sp,
@@ -95,7 +93,7 @@ class MyApp extends StatelessWidget {
           ),
           home: child,
           routes: {
-            Routes.home: (context) => const HomeScreen(),
+            Routes.home: (context) => const MainPageScreen(),
           },
         );
       },

@@ -31,7 +31,10 @@ class _SplashScreenState extends State<SplashScreen> {
               padding: EdgeInsets.all(24.w),
               child: DefaultTextStyle(
                 textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.displayLarge!.copyWith(fontWeight: FontWeight.w200),
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(fontWeight: FontWeight.w200),
                 child: AnimatedTextKit(
                   isRepeatingAnimation: false,
                   animatedTexts: [
