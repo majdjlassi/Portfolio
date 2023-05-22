@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum CornerPainterAlignment { bottomRight, topLeft }
+enum CornerPainterAlignment { bottomRight, topLeft, left }
 
 class CornerPainter extends CustomPainter {
   final CornerPainterAlignment alignment;
@@ -32,6 +32,12 @@ class CornerPainter extends CustomPainter {
               paint);
           break;
         }
+      case CornerPainterAlignment.left:
+        {
+          canvas.drawPath(
+              left(rectWidth, rectHeight, size.height, squareSize), paint);
+          break;
+        }
     }
   }
 
@@ -54,6 +60,15 @@ class CornerPainter extends CustomPainter {
     ..lineTo(squareSize, rectHeight)
     ..lineTo(0, rectHeight)
     ..close();
+
+  Path left(double rectWidth, double rectHeight, double parentHeight,
+          double squareSize) =>
+      Path()
+        ..moveTo(0, parentHeight)
+        ..lineTo(squareSize, parentHeight)
+        ..lineTo(squareSize, rectHeight - squareSize + 14.w)
+        ..lineTo(0, rectHeight - squareSize + 14.w)
+        ..close();
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {

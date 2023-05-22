@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:portfolio/screens/main_page.dart';
+import 'package:portfolio/screens/main_screen.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/screens/splash_screen.dart';
 import 'package:portfolio/utils/routes.dart';
@@ -77,19 +77,26 @@ class MyApp extends StatelessWidget {
               bodyLarge: TextStyle(
                 fontSize: 16.sp,
                 color: AppColors.black[600],
-                fontWeight: FontWeight.w200,
+                fontWeight: FontWeight.normal,
               ),
               bodyMedium: TextStyle(
                 fontSize: 14.sp,
                 color: AppColors.black[600],
-                fontWeight: FontWeight.w200,
+                fontWeight: FontWeight.normal,
               ),
               bodySmall: TextStyle(
                 fontSize: 12.sp,
                 color: AppColors.black[600],
-                fontWeight: FontWeight.w200,
+                fontWeight: FontWeight.normal,
               ),
             ),
+            scrollbarTheme: ScrollbarThemeData(
+              thumbVisibility: const MaterialStatePropertyAll(true),
+              trackBorderColor: MaterialStatePropertyAll(AppColors.white),
+              thumbColor: MaterialStatePropertyAll(AppColors.white),
+              mainAxisMargin: 35.w,
+              minThumbLength: 35.w
+            )
           ),
           home: child,
           routes: {

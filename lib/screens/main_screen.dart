@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/screens/about_me.dart';
-import 'package:portfolio/screens/home_screen.dart';
+import 'package:portfolio/screens/about_me_page.dart';
+import 'package:portfolio/screens/experiences_page.dart';
+import 'package:portfolio/screens/home_page.dart';
 
 class MainPageScreen extends StatefulWidget {
   const MainPageScreen({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class _MainPageScreenState extends State<MainPageScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+  bool shouldScroll = true;
 
   @override
   void initState() {
@@ -33,12 +35,26 @@ class _MainPageScreenState extends State<MainPageScreen>
   @override
   Widget build(BuildContext context) {
     return PageView(
+      physics: shouldScroll ? const ClampingScrollPhysics() : const NeverScrollableScrollPhysics(),
       scrollDirection: Axis.horizontal,
       children: [
-        HomeScreen(
-          animation: _animation,
+        PageView(
+          scrollDirection: Axis.vertical,
+          onPageChanged: (index){
+            setState(() {
+              shouldScroll = index == 0;
+            });
+          },
+          children: [
+            HomePage(
+              animation: _animation,
+            ),
+            ExperiencePage(
+              animation: _animation,
+            ),
+          ],
         ),
-        AboutMeScreen(
+        AboutMePage(
           animation: _animation,
         ),
       ],
