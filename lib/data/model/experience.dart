@@ -51,11 +51,13 @@ class Experience {
 
   String get duration => "${convertDate(startDate)} - $_presentEndDate";
 
-  String get _presentEndDate => endDate == 'Present' ? 'Present' : convertDate(endDate);
+  String get _presentEndDate =>
+      endDate == 'Present' ? 'Present' : convertDate(endDate);
 }
 
 class Project {
   late String name;
+  String? icon;
   late String description;
   late List<String> images;
   late String achievements;
@@ -63,6 +65,7 @@ class Project {
 
   Project(
       {required this.name,
+      this.icon,
       required this.description,
       required this.images,
       required this.achievements,
@@ -70,6 +73,7 @@ class Project {
 
   Project.fromJson(Map<String, dynamic> json) {
     name = json['name'];
+    icon = json['icon'];
     description = json['description'];
     images = json['images'].cast<String>();
     achievements = json['achievements'];
@@ -79,6 +83,7 @@ class Project {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
+    data['icon'] = icon;
     data['description'] = description;
     data['images'] = images;
     data['achievements'] = achievements;

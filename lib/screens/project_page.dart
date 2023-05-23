@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/data/model/experience.dart';
 import 'package:portfolio/utils/resuable_widgets.dart';
 
@@ -19,9 +20,23 @@ class _ProjectPageState extends State<ProjectPage> {
     return ListView(
       padding: EdgeInsets.all(16.w),
       children: [
-        Text(
-          widget.project.name,
-          style: Theme.of(context).textTheme.headlineSmall,
+        Row(
+          children: [
+            if (widget.project.icon != null) ...[
+              SvgPicture.asset(
+                widget.project.icon!,
+                width: 64.w,
+                height: 64.w,
+              ),
+              SizedBox(
+                width: 8.w,
+              )
+            ],
+            Text(
+              widget.project.name,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ],
         ),
         SizedBox(
           height: 8.h,

@@ -10,6 +10,7 @@
     "projects": [
       {
         "name": "Minoo",
+        "icon": "assets/icons/icon-momi.svg",
         "description": "I worked on a project called Minoo which is a molecular test device used to identify the genetic signature of viruses and display it is result in a few minutes via a Mobile Application.",
         "images": [
           "assets/projects/minoo.png",
@@ -45,6 +46,7 @@
     "projects": [
       {
         "name": "MyBiat",
+        "icon": "assets/icons/icon-my-biat.svg",
         "description": "I Worked on a mobile banking application called MyBiat, it's set to provide users with\nconvenient access to their financial accounts and perform various banking transactions securely and efficiently.",
         "images": [
           "assets/projects/my-biat.jpg",
@@ -63,6 +65,7 @@
       },
       {
         "name": "My Biat Corporate",
+        "icon": "assets/icons/icon-my-biat-corporate.svg",
         "description": "I Worked on a Mobile banking application for corporates, allowing to confirm the transactions of approval/rejection of batches made from the Web application.",
         "images": [
           "assets/projects/my-biat-corporate.png",
