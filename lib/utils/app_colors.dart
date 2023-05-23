@@ -17,7 +17,7 @@ class AppColors {
   static const int _primaryBlackColor = 0xFF000000;
 
   static MaterialColor white =
-  const MaterialColor(_primaryWhiteColor, <int, Color>{
+      const MaterialColor(_primaryWhiteColor, <int, Color>{
     50: Color(_primaryWhiteColor),
     100: Color(0xFFEEF5F5),
     200: Color(0xFFE8F3F3),
@@ -25,6 +25,22 @@ class AppColors {
     400: Color(0xFFDDEAEA),
   });
   static const int _primaryWhiteColor = 0xFFFFFFFF;
-  
+
   static const Color scaffoldBackground = Color(0xFFEEF5F5);
+
+  static const ColorScheme colorScheme = ColorScheme(
+    brightness: Brightness.light,
+    primary: Color(0xFF000000),
+    onPrimary: Color(0xFF000000),
+    secondary: Color(0xFF242424),
+    onSecondary: Color(0xFF3C3C3C),
+    error: Color(0xFFBA1A1A),
+    onError: Color(0xFFFFFFFF),
+    background: Color(0xFFEEF5F5),
+    onBackground: Color(0xFFFFFFFF),
+    surface: Color(0xFFEEF5F5),
+    onSurface: Color(0xFF000000),
+    outline: Color(0xFF000000),
+    shadow: Color(0xFF000000),
+  );
 }

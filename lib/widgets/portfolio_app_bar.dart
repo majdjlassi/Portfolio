@@ -53,7 +53,7 @@ class _PortfolioAppBarState extends State<PortfolioAppBar> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 0.3.sh,
+      height: 0.31.sh,
       padding:
           EdgeInsets.only(top: 40.h, left: 16.w, right: 16.w, bottom: 16.h),
       decoration: BoxDecoration(

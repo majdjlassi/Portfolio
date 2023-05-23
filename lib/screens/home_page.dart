@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage>
             ),
           ),
           SizedBox(
-            width: 0.8.sw,
+            width: 0.78.sw,
             height: double.infinity,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -101,21 +101,13 @@ class _HomePageState extends State<HomePage>
                   SizedBox(
                     height: 32.h,
                   ),
-                  DefaultTextStyle(
+                  Text(
+                    '''Flutter/Android Developer with 5 years of experience designing and developing native and cross-platform mobile applications. Proficient in leveraging the Flutter framework to create robust and visually appealing user interfaces while ensuring seamless performance and responsiveness. Strong understanding of the mobile app development lifecycle, Agile methodologies, and UI/UX design principles. Capable of collaborating with cross-functional teams to deliver exceptional user experiences. Committed to staying current on the latest trends and technologies in the Flutter ecosystem.''',
                     textAlign: TextAlign.justify,
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        height: 1.4.sp,
-                        letterSpacing: 1.4.sp,
+                        height: 1.2.sp,
+                        letterSpacing: 1.sp,
                         color: Theme.of(context).scaffoldBackgroundColor),
-                    child: AnimatedTextKit(
-                      isRepeatingAnimation: false,
-                      animatedTexts: [
-                        TypewriterAnimatedText(
-                          '''Flutter/Android Developer with 5 years of experience designing and developing native and cross-platform mobile applications. Proficient in leveraging the Flutter framework to create robust and visually appealing user interfaces while ensuring seamless performance and responsiveness. Strong understanding of the mobile app development lifecycle, Agile methodologies, and UI/UX design principles. Capable of collaborating with cross-functional teams to deliver exceptional user experiences. Committed to staying current on the latest trends and technologies in the Flutter ecosystem.''',
-                          speed: const Duration(milliseconds: 30),
-                        ),
-                      ],
-                    ),
                   ),
                   const Spacer(),
                   Row(

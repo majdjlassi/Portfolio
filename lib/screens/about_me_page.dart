@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/resuable_widgets.dart';
 import 'package:portfolio/widgets/portfolio_app_bar.dart';
 
 class AboutMePage extends StatefulWidget {
@@ -138,18 +139,18 @@ class _AboutMePageState extends State<AboutMePage> {
           spacing: 8.w,
           runSpacing: -6.w,
           children: [
-            _chip('FLUTTER SDK'),
-            _chip('DART'),
-            _chip('ANDROID SDK'),
-            _chip('KOTLIN'),
-            _chip('RESTFUL API'),
-            _chip('FIREBASE SERVICES'),
-            _chip('FLUTTER STATE MANAGEMENT (BLOC)'),
-            _chip('UNIT/WIDGET/GOLDEN TEST'),
-            _chip('UX/UI DESIGN'),
-            _chip('AGILE(SCRUM)'),
-            _chip('GIT VERSION CONTROL'),
-            _chip('CI/CD'),
+            chip(context, 'FLUTTER SDK'),
+            chip(context, 'DART'),
+            chip(context, 'ANDROID SDK'),
+            chip(context, 'KOTLIN'),
+            chip(context, 'RESTFUL API'),
+            chip(context, 'FIREBASE SERVICES'),
+            chip(context, 'FLUTTER STATE MANAGEMENT (BLOC)'),
+            chip(context, 'UNIT/WIDGET/GOLDEN TEST'),
+            chip(context, 'UX/UI DESIGN'),
+            chip(context, 'AGILE(SCRUM)'),
+            chip(context, 'GIT VERSION CONTROL'),
+            chip(context, 'CI/CD'),
           ],
         ),
       ];
@@ -196,16 +197,7 @@ class _AboutMePageState extends State<AboutMePage> {
         ],
       );
 
-  Widget _chip(String label) => Chip(
-        label: Text(
-          label,
-          style: Theme.of(context).textTheme.labelLarge,
-        ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        shape: RoundedRectangleBorder(
-            side: BorderSide(color: Theme.of(context).primaryColor),
-            borderRadius: BorderRadius.circular(20.w)),
-      );
+
 
   List<Widget> _languageProgress(String text, double progress) => [
         Text(
