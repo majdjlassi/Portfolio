@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/routes.dart';
 import 'package:portfolio/utils/utils.dart';
 import 'package:portfolio/widgets/experience_tile.dart';
@@ -53,7 +52,7 @@ class _ExperiencePageState extends State<ExperiencePage> {
                 },
                 separatorBuilder: (BuildContext context, int index) {
                   return Divider(
-                    color: AppColors.scaffoldBackground.withOpacity(0.4),
+                    color: Theme.of(context).colorScheme.background.withOpacity(0.4),
                     indent: 88.w,
                     endIndent: 16.w,
                     thickness: 1.h,

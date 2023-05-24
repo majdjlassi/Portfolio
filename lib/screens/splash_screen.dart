@@ -3,6 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:portfolio/utils/routes.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -31,9 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
               padding: EdgeInsets.all(24.w),
               child: DefaultTextStyle(
                 textAlign: TextAlign.start,
-                style: Theme.of(context)
-                    .textTheme
-                    .displayLarge!
+                style: context.pDisplayLarge!
                     .copyWith(fontWeight: FontWeight.w200),
                 child: AnimatedTextKit(
                   isRepeatingAnimation: false,

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/data/model/experience.dart';
 import 'package:portfolio/screens/project_page.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 import 'package:portfolio/widgets/page_view_swipe_indicator.dart';
 
 class ExperienceDetailsScreen extends StatefulWidget {
@@ -79,8 +80,7 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
                       ),
                       Text(
                         'BACK',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: Theme.of(context).colorScheme.onBackground),
+                        style: context.sBodyLarge,
                       ),
                     ],
                   ),
@@ -97,7 +97,7 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
                         width: 88.w,
                         height: 88.w,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).scaffoldBackgroundColor,
+                          color: Theme.of(context).colorScheme.background,
                           borderRadius: BorderRadius.all(Radius.circular(16.w)),
                         ),
                         child: Center(
@@ -118,34 +118,19 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
                         children: [
                           Text(
                             widget.experience.companyName,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineSmall!
+                            style: context.sHeadlineSmall!
                                 .copyWith(
                                   fontWeight: FontWeight.bold,
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
                                 ),
                           ),
                           Text(
                             widget.experience.position,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                ),
+                            style: context
+                                .sBodyLarge,
                           ),
                           Text(
                             widget.experience.duration,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                ),
+                            style: context.sBodyLarge
                           ),
                         ],
                       ),

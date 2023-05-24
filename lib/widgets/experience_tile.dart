@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/data/model/experience.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 
 class ExperienceTile extends StatelessWidget {
   final Experience experience;
@@ -26,7 +27,7 @@ class ExperienceTile extends StatelessWidget {
                 width: 56.w,
                 height: 56.w,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor,
+                  color: Theme.of(context).colorScheme.background,
                   borderRadius: BorderRadius.all(Radius.circular(16.w)),
                 ),
                 child: Center(
@@ -46,22 +47,17 @@ class ExperienceTile extends StatelessWidget {
                 children: [
                   Text(
                     experience.companyName,
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    style: context.sBodyLarge!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).scaffoldBackgroundColor,
                         ),
                   ),
                   Text(
                     experience.position,
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                        ),
+                    style: context.sLabelLarge,
                   ),
                   Text(
                     experience.duration,
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          color: Theme.of(context).scaffoldBackgroundColor,
-                        ),
+                    style: context.sLabelLarge,
                   ),
                 ],
               ),

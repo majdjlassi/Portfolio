@@ -20,67 +20,129 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           title: 'Portfolio',
+          color: AppColors.white,
           theme: ThemeData(
               useMaterial3: true,
               colorScheme: AppColors.colorScheme,
               textTheme: TextTheme(
                 displayLarge: TextStyle(
                   fontSize: 57.sp,
-                  color: AppColors.black,
+                  color: AppColors.colorScheme.onSecondary,
                   fontWeight: FontWeight.w900,
                 ),
                 displayMedium: TextStyle(
                   fontSize: 45.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                   fontWeight: FontWeight.bold,
                 ),
                 displaySmall: TextStyle(
                   fontSize: 36.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                   wordSpacing: 1.5,
                   fontWeight: FontWeight.w600,
                 ),
                 headlineLarge: TextStyle(
                   fontSize: 32.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                   fontWeight: FontWeight.bold,
                 ),
                 headlineMedium: TextStyle(
                   fontSize: 28.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                   fontWeight: FontWeight.bold,
                 ),
                 headlineSmall: TextStyle(
                   fontSize: 24.sp,
                   letterSpacing: 1.5,
-                  color: AppColors.black,
+                  color: AppColors.colorScheme.onSecondary,
                   fontWeight: FontWeight.bold,
                 ),
                 labelLarge: TextStyle(
                   fontSize: 14.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                 ),
                 labelMedium: TextStyle(
                   fontSize: 12.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                 ),
                 labelSmall: TextStyle(
                   fontSize: 11.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                 ),
                 bodyLarge: TextStyle(
                   fontSize: 16.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                   fontWeight: FontWeight.normal,
                 ),
                 bodyMedium: TextStyle(
                   fontSize: 14.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
                   fontWeight: FontWeight.normal,
                 ),
                 bodySmall: TextStyle(
                   fontSize: 12.sp,
-                  color: AppColors.black[600],
+                  color: AppColors.colorScheme.onSecondary,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              primaryTextTheme: TextTheme(
+                displayLarge: TextStyle(
+                  fontSize: 57.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                  fontWeight: FontWeight.w900,
+                ),
+                displayMedium: TextStyle(
+                  fontSize: 45.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold,
+                ),
+                displaySmall: TextStyle(
+                  fontSize: 36.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                  wordSpacing: 1.5,
+                  fontWeight: FontWeight.w600,
+                ),
+                headlineLarge: TextStyle(
+                  fontSize: 32.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold,
+                ),
+                headlineMedium: TextStyle(
+                  fontSize: 28.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold,
+                ),
+                headlineSmall: TextStyle(
+                  fontSize: 24.sp,
+                  letterSpacing: 1.5,
+                  color: AppColors.colorScheme.onPrimary,
+                  fontWeight: FontWeight.bold,
+                ),
+                labelLarge: TextStyle(
+                  fontSize: 14.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                ),
+                labelMedium: TextStyle(
+                  fontSize: 12.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                ),
+                labelSmall: TextStyle(
+                  fontSize: 11.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                ),
+                bodyLarge: TextStyle(
+                  fontSize: 16.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                  fontWeight: FontWeight.normal,
+                ),
+                bodyMedium: TextStyle(
+                  fontSize: 14.sp,
+                  color: AppColors.colorScheme.onPrimary,
+                  fontWeight: FontWeight.normal,
+                ),
+                bodySmall: TextStyle(
+                  fontSize: 12.sp,
+                  color: AppColors.colorScheme.onPrimary,
                   fontWeight: FontWeight.normal,
                 ),
               ),

@@ -26,19 +26,19 @@ class AppColors {
   });
   static const int _primaryWhiteColor = 0xFFFFFFFF;
 
-  static const Color scaffoldBackground = Color(0xFFEEF5F5);
+  static const Color scaffoldBackground = Color(0xFFF8F8F8);
 
   static const ColorScheme colorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: Color(0xFF000000),
-    onPrimary: Color(0xFF000000),
+    primary: Color(0xFF1C1D1F),
+    onPrimary: Color(0xFF1C1D1F),
     secondary: Color(0xFF242424),
-    onSecondary: Color(0xFF3C3C3C),
+    onSecondary: Color(0xFFFFFFFF),
     error: Color(0xFFBA1A1A),
     onError: Color(0xFFFFFFFF),
-    background: Color(0xFFEEF5F5),
-    onBackground: Color(0xFFFFFFFF),
-    surface: Color(0xFFEEF5F5),
+    background: Color(0xFFFFFFFF),
+    onBackground: Color(0xFF8D8C8C),
+    surface: Color(0xFFFFFFFF),
     onSurface: Color(0xFF000000),
     outline: Color(0xFF000000),
     shadow: Color(0xFF000000),

@@ -35,12 +35,14 @@ class _MainPageScreenState extends State<MainPageScreen>
   @override
   Widget build(BuildContext context) {
     return PageView(
-      physics: shouldScroll ? const ClampingScrollPhysics() : const NeverScrollableScrollPhysics(),
+      physics: shouldScroll
+          ? const ClampingScrollPhysics()
+          : const NeverScrollableScrollPhysics(),
       scrollDirection: Axis.horizontal,
       children: [
         PageView(
           scrollDirection: Axis.vertical,
-          onPageChanged: (index){
+          onPageChanged: (index) {
             setState(() {
               shouldScroll = index == 0;
             });

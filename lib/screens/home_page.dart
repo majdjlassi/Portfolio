@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 import 'package:portfolio/widgets/clipper/custom_edge_clipper.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,10 +43,7 @@ class _HomePageState extends State<HomePage>
               ),
               Text(
                 'MAJD\nJLASSI',
-                style: Theme.of(context)
-                    .textTheme
-                    .displayMedium!
-                    .copyWith(letterSpacing: 5),
+                style: context.pDisplayMedium!.copyWith(letterSpacing: 5),
               ),
             ],
           ),
@@ -76,9 +74,6 @@ class _HomePageState extends State<HomePage>
                     children: [
                       SvgPicture.asset(
                         'assets/images/ic_coding.svg',
-                        colorFilter: ColorFilter.mode(
-                            Theme.of(context).scaffoldBackgroundColor,
-                            BlendMode.modulate),
                       ),
                       SizedBox(
                         width: 16.w,
@@ -86,14 +81,10 @@ class _HomePageState extends State<HomePage>
                       Flexible(
                         child: Text(
                           'Mobile App Developer',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 2.0,
-                                  color: Theme.of(context)
-                                      .scaffoldBackgroundColor),
+                          style: context.sBodyLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 2.0,
+                          ),
                         ),
                       ),
                     ],
@@ -104,10 +95,8 @@ class _HomePageState extends State<HomePage>
                   Text(
                     '''Flutter/Android Developer with 5 years of experience designing and developing native and cross-platform mobile applications. Proficient in leveraging the Flutter framework to create robust and visually appealing user interfaces while ensuring seamless performance and responsiveness. Strong understanding of the mobile app development lifecycle, Agile methodologies, and UI/UX design principles. Capable of collaborating with cross-functional teams to deliver exceptional user experiences. Committed to staying current on the latest trends and technologies in the Flutter ecosystem.''',
                     textAlign: TextAlign.justify,
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        height: 1.2.sp,
-                        letterSpacing: 1.sp,
-                        color: Theme.of(context).scaffoldBackgroundColor),
+                    style: context.sBodyLarge!
+                        .copyWith(height: 1.2.sp, letterSpacing: 1.sp),
                   ),
                   const Spacer(),
                   Row(
@@ -121,9 +110,7 @@ class _HomePageState extends State<HomePage>
                         children: [
                           Text(
                             'EXPERIENCES',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
+                            style: context.sBodyLarge!
                                 .copyWith(color: AppColors.white[200]),
                           ),
                           SizedBox(
@@ -160,9 +147,7 @@ class _HomePageState extends State<HomePage>
                   quarterTurns: -1,
                   child: Text(
                     'ABOUT ME',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge!
+                    style: context.pBodyLarge!
                         .copyWith(color: Theme.of(context).primaryColor),
                   ),
                 ),

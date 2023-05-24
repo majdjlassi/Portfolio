@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 
 enum PortfolioAppBarTheme { dark, light }
 
@@ -40,13 +41,13 @@ class _PortfolioAppBarState extends State<PortfolioAppBar> {
   }
 
   Color get primaryThemeColor => switch (widget.portfolioAppBarTheme) {
-        PortfolioAppBarTheme.light => Theme.of(context).scaffoldBackgroundColor,
-        PortfolioAppBarTheme.dark => Theme.of(context).primaryColor,
+        PortfolioAppBarTheme.light => Theme.of(context).colorScheme.background,
+        PortfolioAppBarTheme.dark => Theme.of(context).colorScheme.primary,
       };
 
   Color get secondaryThemeColor => switch (widget.portfolioAppBarTheme) {
-        PortfolioAppBarTheme.light => Theme.of(context).primaryColor,
-        PortfolioAppBarTheme.dark => Theme.of(context).scaffoldBackgroundColor,
+        PortfolioAppBarTheme.light => Theme.of(context).colorScheme.primary,
+        PortfolioAppBarTheme.dark => Theme.of(context).colorScheme.background,
       };
 
   @override
@@ -82,8 +83,8 @@ class _PortfolioAppBarState extends State<PortfolioAppBar> {
                   offset: Offset(0, widget.animation.value * 50.0),
                   child: SvgPicture.asset(
                     'assets/images/ic_up_arrow.svg',
-                    colorFilter:
-                    ColorFilter.mode(secondaryThemeColor, BlendMode.modulate),
+                    colorFilter: ColorFilter.mode(
+                        secondaryThemeColor, BlendMode.modulate),
                   ),
                 );
               },
@@ -93,9 +94,9 @@ class _PortfolioAppBarState extends State<PortfolioAppBar> {
             ),
             Text(
               widget.upperPageTitle!,
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    color: secondaryThemeColor,
-                  ),
+              style: context.pBodyLarge!.copyWith(
+                color: secondaryThemeColor,
+              ),
             ),
             SizedBox(
               height: 40.h,
@@ -105,11 +106,11 @@ class _PortfolioAppBarState extends State<PortfolioAppBar> {
             children: [
               Text(
                 widget.title,
-                style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                      letterSpacing: 2,
-                      fontWeight: FontWeight.w900,
-                      color: secondaryThemeColor,
-                    ),
+                style: context.pDisplayMedium!.copyWith(
+                  letterSpacing: 2,
+                  fontWeight: FontWeight.w900,
+                  color: secondaryThemeColor,
+                ),
               ),
             ],
           ),

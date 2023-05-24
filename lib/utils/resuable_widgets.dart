@@ -1,11 +1,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 
-Widget chip(context, String label) => Chip(
+Widget chip(BuildContext context, String label) => Chip(
   label: Text(
     label,
-    style: Theme.of(context).textTheme.labelLarge,
+    style: context.pLabelLarge,
   ),
   backgroundColor: Theme.of(context).scaffoldBackgroundColor,
   shape: RoundedRectangleBorder(

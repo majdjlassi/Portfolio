@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/data/model/experience.dart';
 import 'package:portfolio/utils/resuable_widgets.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 
 class ProjectPage extends StatefulWidget {
   final Project project;
@@ -34,7 +35,7 @@ class _ProjectPageState extends State<ProjectPage> {
             ],
             Text(
               widget.project.name,
-              style: Theme.of(context).textTheme.headlineSmall,
+              style: context.pHeadlineSmall,
             ),
           ],
         ),
@@ -44,7 +45,7 @@ class _ProjectPageState extends State<ProjectPage> {
         Text(
           widget.project.description,
           textAlign: TextAlign.justify,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: context.pBodyLarge,
         ),
         SizedBox(
           height: 24.h,
@@ -66,7 +67,7 @@ class _ProjectPageState extends State<ProjectPage> {
         ],
         Text(
           'Achievements',
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: context.pHeadlineSmall,
         ),
         SizedBox(
           height: 8.h,
@@ -75,9 +76,9 @@ class _ProjectPageState extends State<ProjectPage> {
           data: widget.project.achievements,
           style: {
             "body": Style(
-              color: Theme.of(context).textTheme.bodyLarge!.color,
+              color: context.pBodyLarge!.color,
               fontSize: FontSize(16.w, Unit.px),
-              fontWeight: Theme.of(context).textTheme.bodyLarge!.fontWeight,
+              fontWeight: context.pBodyLarge!.fontWeight,
               textAlign: TextAlign.justify,
               lineHeight: const LineHeight(1.5),
             ),
@@ -88,7 +89,7 @@ class _ProjectPageState extends State<ProjectPage> {
         ),
         Text(
           'Technologies',
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: context.pHeadlineSmall,
         ),
         SizedBox(
           height: 8.h,
@@ -113,7 +114,7 @@ class _ProjectPageState extends State<ProjectPage> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16.w),
-          border: Border.all(color: Theme.of(context).colorScheme.onSecondary),
+          border: Border.all(color: Theme.of(context).colorScheme.primary),
           image: DecorationImage(
             image: AssetImage(imagePath),
             fit: BoxFit.scaleDown,

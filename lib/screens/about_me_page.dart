@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/resuable_widgets.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 import 'package:portfolio/widgets/portfolio_app_bar.dart';
 
 class AboutMePage extends StatefulWidget {
@@ -43,7 +44,7 @@ class _AboutMePageState extends State<AboutMePage> {
                       child: SvgPicture.asset(
                         'assets/images/ic_left_arrow.svg',
                         colorFilter: ColorFilter.mode(
-                            Theme.of(context).primaryColor, BlendMode.modulate),
+                            Theme.of(context).colorScheme.primary, BlendMode.modulate),
                       ),
                     );
                   },
@@ -55,10 +56,8 @@ class _AboutMePageState extends State<AboutMePage> {
                   quarterTurns: -1,
                   child: Text(
                     'HOME PAGE',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge!
-                        .copyWith(color: Theme.of(context).primaryColor),
+                    style: context.pBodyLarge!
+                        .copyWith(color: Theme.of(context).colorScheme.primary),
                   ),
                 ),
               ],
@@ -68,7 +67,7 @@ class _AboutMePageState extends State<AboutMePage> {
             child: RawScrollbar(
               controller: _scrollController,
               thumbVisibility: true,
-              thumbColor: Theme.of(context).primaryColor,
+              thumbColor: Theme.of(context).colorScheme.primary,
               radius: Radius.circular(12.w),
               padding: EdgeInsets.only(right: 2.w),
               child: SingleChildScrollView(
@@ -110,7 +109,7 @@ class _AboutMePageState extends State<AboutMePage> {
   List<Widget> get _contactSection => [
         Text(
           'CONTACT',
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: context.pHeadlineSmall,
         ),
         SizedBox(
           height: 24.h,
@@ -130,7 +129,7 @@ class _AboutMePageState extends State<AboutMePage> {
   List<Widget> get _skillsSections => [
         Text(
           'Skills',
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: context.pHeadlineSmall,
         ),
         SizedBox(
           height: 24.h,
@@ -158,7 +157,7 @@ class _AboutMePageState extends State<AboutMePage> {
   List<Widget> get _languageSection => [
         Text(
           'LANGUAGES',
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: context.pHeadlineSmall,
         ),
         SizedBox(
           height: 24.h,
@@ -191,7 +190,7 @@ class _AboutMePageState extends State<AboutMePage> {
           Flexible(
             child: Text(
               text,
-              style: Theme.of(context).textTheme.labelLarge,
+              style: context.pLabelLarge,
             ),
           ),
         ],
@@ -202,9 +201,7 @@ class _AboutMePageState extends State<AboutMePage> {
   List<Widget> _languageProgress(String text, double progress) => [
         Text(
           text,
-          style: Theme.of(context)
-              .textTheme
-              .labelLarge!
+          style: context.pLabelLarge!
               .copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(
@@ -218,7 +215,7 @@ class _AboutMePageState extends State<AboutMePage> {
           child: LinearProgressIndicator(
             backgroundColor: Theme.of(context).colorScheme.secondary,
             valueColor: AlwaysStoppedAnimation<Color>(
-                Theme.of(context).scaffoldBackgroundColor),
+                Theme.of(context).colorScheme.background),
             value: progress,
           ),
         ),
@@ -231,7 +228,7 @@ class _AboutMePageState extends State<AboutMePage> {
             svgAsset,
             width: 24.w,
             colorFilter: ColorFilter.mode(
-                Theme.of(context).primaryColor, BlendMode.modulate),
+                Theme.of(context).colorScheme.primary, BlendMode.modulate),
           ),
           SizedBox(
             width: 16.w,
@@ -239,15 +236,15 @@ class _AboutMePageState extends State<AboutMePage> {
           Expanded(
             child: Text(
               label,
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+              style: context.pHeadlineSmall!.copyWith(
                   fontWeight: FontWeight.normal,
-                  color: Theme.of(context).primaryColor),
+                  color: Theme.of(context).colorScheme.primary),
             ),
           ),
           SvgPicture.asset(
             'assets/images/ic_right_arrow.svg',
             colorFilter: ColorFilter.mode(
-                Theme.of(context).primaryColor, BlendMode.modulate),
+                Theme.of(context).colorScheme.primary, BlendMode.modulate),
             height: 14.w,
           ),
         ],
