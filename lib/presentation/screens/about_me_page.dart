@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:portfolio/data/model/personal_info.dart';
+import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_cubit.dart';
+import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_state.dart';
+import 'package:portfolio/presentation/widgets/portfolio_app_bar.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/resuable_widgets.dart';
 import 'package:portfolio/utils/ui_extension.dart';
-import 'package:portfolio/widgets/portfolio_app_bar.dart';
 
 class AboutMePage extends StatefulWidget {
   final Animation<double> animation;
@@ -17,6 +22,13 @@ class AboutMePage extends StatefulWidget {
 
 class _AboutMePageState extends State<AboutMePage> {
   final _scrollController = ScrollController();
+  final _cubit = GetIt.I<PersonalInfoCubit>();
+
+  @override
+  void initState() {
+    super.initState();
+    _cubit.getPersonalInfo();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +56,8 @@ class _AboutMePageState extends State<AboutMePage> {
                       child: SvgPicture.asset(
                         'assets/images/ic_left_arrow.svg',
                         colorFilter: ColorFilter.mode(
-                            Theme.of(context).colorScheme.primary, BlendMode.modulate),
+                            Theme.of(context).colorScheme.primary,
+                            BlendMode.modulate),
                       ),
                     );
                   },
@@ -83,7 +96,16 @@ class _AboutMePageState extends State<AboutMePage> {
     );
   }
 
-  Widget get body => Column(
+  Widget get body => BlocBuilder<PersonalInfoCubit, PersonalInfoState>(
+        bloc: _cubit,
+        builder: (context, state) => switch (state) {
+          PersonalInfoStateLoading() => Container(),
+          PersonalInfoStateSuccess() => successWidget,
+          PersonalInfoStateFailed() => Container(),
+        },
+      );
+
+  Widget get successWidget => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ..._contactSection,
@@ -196,13 +218,10 @@ class _AboutMePageState extends State<AboutMePage> {
         ],
       );
 
-
-
   List<Widget> _languageProgress(String text, double progress) => [
         Text(
           text,
-          style: context.pLabelLarge!
-              .copyWith(fontWeight: FontWeight.bold),
+          style: context.pLabelLarge!.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: 8.h,

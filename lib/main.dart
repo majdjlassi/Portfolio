@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:portfolio/di/injection.dart';
+import 'package:portfolio/presentation/screens/splash_screen.dart';
 import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/screens/splash_screen.dart';
 import 'package:portfolio/utils/routes.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 

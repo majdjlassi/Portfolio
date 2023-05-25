@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:portfolio/data/model/experience.dart';
+import 'package:portfolio/data/model/project.dart';
+import 'package:portfolio/presentation/widgets/cached_picture.dart';
+import 'package:portfolio/presentation/widgets/cached_svg_picture.dart';
 import 'package:portfolio/utils/resuable_widgets.dart';
 import 'package:portfolio/utils/ui_extension.dart';
 
@@ -24,8 +25,8 @@ class _ProjectPageState extends State<ProjectPage> {
         Row(
           children: [
             if (widget.project.icon != null) ...[
-              SvgPicture.asset(
-                widget.project.icon!,
+              CachedSvgPicture(
+                imageUrl: widget.project.icon!,
                 width: 64.w,
                 height: 64.w,
               ),
@@ -50,15 +51,16 @@ class _ProjectPageState extends State<ProjectPage> {
         SizedBox(
           height: 24.h,
         ),
-        if (widget.project.images.isNotEmpty) ...[
+        if (widget.project.images case List<String>()) ...[
           ConstrainedBox(
             constraints: BoxConstraints(
               maxHeight: 0.5.sh,
             ),
-            child: ListView(
+            child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              children:
-                  widget.project.images.map((e) => roundedImage(e)).toList(),
+              itemCount: widget.project.images!.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  roundedImage(widget.project.images![index]),
             ),
           ),
           SizedBox(
@@ -107,18 +109,14 @@ class _ProjectPageState extends State<ProjectPage> {
     );
   }
 
-  Widget roundedImage(String imagePath) => Container(
+  Widget roundedImage(String imageUrl) => CachedPicture(
+        imageUrl: imageUrl,
         width: 0.5.sw,
         height: 0.5.sh,
         margin: EdgeInsets.only(right: 24.w),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16.w),
-          border: Border.all(color: Theme.of(context).colorScheme.primary),
-          image: DecorationImage(
-            image: AssetImage(imagePath),
-            fit: BoxFit.scaleDown,
-          ),
-        ),
+        borderRadius: BorderRadius.circular(16.w),
+        fit: BoxFit.scaleDown,
+        backgroundColor: Colors.white,
+        border: Border.all(color: Theme.of(context).colorScheme.primary),
       );
 }

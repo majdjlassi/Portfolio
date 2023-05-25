@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/data/model/experience.dart';
-import 'package:portfolio/screens/project_page.dart';
+import 'package:portfolio/presentation/screens/project_page.dart';
+import 'package:portfolio/presentation/widgets/cached_svg_picture.dart';
 import 'package:portfolio/utils/ui_extension.dart';
-import 'package:portfolio/widgets/page_view_swipe_indicator.dart';
+import 'package:portfolio/presentation/widgets/page_view_swipe_indicator.dart';
 
 class ExperienceDetailsScreen extends StatefulWidget {
   final Experience experience;
@@ -101,8 +102,8 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
                           borderRadius: BorderRadius.all(Radius.circular(16.w)),
                         ),
                         child: Center(
-                          child: SvgPicture.asset(
-                            widget.experience.logo,
+                          child: CachedSvgPicture(
+                            imageUrl: widget.experience.logo,
                             width: 64.w,
                           ),
                         ),
@@ -118,20 +119,16 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
                         children: [
                           Text(
                             widget.experience.companyName,
-                            style: context.sHeadlineSmall!
-                                .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            style: context.sHeadlineSmall!.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Text(
                             widget.experience.position,
-                            style: context
-                                .sBodyLarge,
+                            style: context.sBodyLarge,
                           ),
-                          Text(
-                            widget.experience.duration,
-                            style: context.sBodyLarge
-                          ),
+                          Text(widget.experience.duration,
+                              style: context.sBodyLarge),
                         ],
                       ),
                     ),

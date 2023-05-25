@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/ui_extension.dart';
-import 'package:portfolio/widgets/clipper/custom_edge_clipper.dart';
+import 'package:portfolio/presentation/widgets/clipper/custom_edge_clipper.dart';
 
 class HomePage extends StatefulWidget {
   final Animation<double> animation;

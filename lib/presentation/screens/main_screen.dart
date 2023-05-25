@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/screens/about_me_page.dart';
-import 'package:portfolio/screens/experiences_page.dart';
-import 'package:portfolio/screens/home_page.dart';
+import 'package:portfolio/presentation/screens/about_me_page.dart';
+import 'package:portfolio/presentation/screens/experiences_page.dart';
+import 'package:portfolio/presentation/screens/home_page.dart';
 
 class MainPageScreen extends StatefulWidget {
   const MainPageScreen({Key? key}) : super(key: key);

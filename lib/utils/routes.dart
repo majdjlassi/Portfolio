@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/data/model/experience.dart';
-import 'package:portfolio/screens/experience_details_screen.dart';
-import 'package:portfolio/screens/main_screen.dart';
+import 'package:portfolio/presentation/screens/experience_details_screen.dart';
+import 'package:portfolio/presentation/screens/main_screen.dart';
 
 class Routes {
   static const String home = "/home";

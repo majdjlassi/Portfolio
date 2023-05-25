@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/data/model/experience.dart';
+import 'package:portfolio/presentation/widgets/cached_svg_picture.dart';
 import 'package:portfolio/utils/ui_extension.dart';
 
 class ExperienceTile extends StatelessWidget {
@@ -31,8 +32,8 @@ class ExperienceTile extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(16.w)),
                 ),
                 child: Center(
-                  child: SvgPicture.asset(
-                    experience.logo,
+                  child: CachedSvgPicture(
+                    imageUrl: experience.logo,
                     width: 40.w,
                   ),
                 ),
@@ -48,8 +49,8 @@ class ExperienceTile extends StatelessWidget {
                   Text(
                     experience.companyName,
                     style: context.sBodyLarge!.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     experience.position,
