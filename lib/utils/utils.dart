@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/file.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:portfolio/data/model/experience.dart';
 
@@ -21,4 +23,13 @@ String convertDate(String date) {
   DateTime parsedDate = inputFormat.parse(date);
   final DateFormat formatter = DateFormat('MMM yyyy');
   return formatter.format(parsedDate);
+}
+
+Future<File> getOrDownloadImage(String imageUrl) async {
+  final cacheFile = await DefaultCacheManager().getFileFromCache(imageUrl);
+  if (cacheFile != null) {
+    return cacheFile.file;
+  }
+  return (await DefaultCacheManager().downloadFile(imageUrl, key: imageUrl))
+      .file;
 }
