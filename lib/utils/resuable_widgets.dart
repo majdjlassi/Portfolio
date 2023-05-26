@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/data/model/personal_info.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/ui_extension.dart';
 
@@ -54,6 +55,31 @@ Widget contactDataRowTile(BuildContext context, String asset, String text) =>
             text,
             style: context.pLabelLarge,
           ),
+        ),
+      ],
+    );
+
+Widget universityDataRowTile(BuildContext context, Education education) =>
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          education.degree.toUpperCase(),
+          style: context.pBodyLarge!.copyWith(fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 8.w,
+        ),
+        Text(
+          '${education.university}, ${education.address}',
+          style: context.pBodyMedium,
+        ),
+        SizedBox(
+          height: 8.w,
+        ),
+        Text(
+          education.duration,
+          style: context.pBodySmall!.copyWith(fontWeight: FontWeight.w300),
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:portfolio/utils/utils.dart';
 
 part 'personal_info.g.dart';
 
@@ -49,6 +50,11 @@ class Education {
   @JsonKey(name: 'start_date')
   String startDate;
   String university;
+
+  String get duration => "${convertDate(startDate)} - $_presentEndDate";
+
+  String get _presentEndDate =>
+      endDate == 'Present' ? 'Present' : convertDate(endDate);
 
   Education({
     required this.address,

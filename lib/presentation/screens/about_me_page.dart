@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get_it/get_it.dart';
 import 'package:portfolio/data/model/personal_info.dart';
 import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_cubit.dart';
 import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_state.dart';
 import 'package:portfolio/presentation/widgets/animated_dot_loading_widget.dart';
 import 'package:portfolio/presentation/widgets/failed_widget.dart';
 import 'package:portfolio/presentation/widgets/portfolio_app_bar.dart';
-import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/resuable_widgets.dart';
 import 'package:portfolio/utils/ui_extension.dart';
 
@@ -129,7 +127,32 @@ class _AboutMePageState extends State<AboutMePage> {
         ),
       );
 
-  List<Widget>_universitySection(PersonalInfo data) => [];
+  List<Widget> _universitySection(PersonalInfo data) => data.education
+          .map((e) => universityDataRowTile(context, e))
+          .map(
+            (e) => (
+              e,
+              SizedBox(
+                height: 16.h,
+              ),
+            ),
+          )
+          .fold(
+        [
+          Text(
+            'Education',
+            style: context.pHeadlineSmall,
+          ),
+          SizedBox(
+            height: 24.h,
+          ),
+        ],
+        (previousValue, element) => [
+          ...previousValue,
+          element.$1,
+          element.$2,
+        ],
+      );
 
   List<Widget> _skillsSections(PersonalInfo data) => [
         Text(
@@ -179,6 +202,4 @@ class _AboutMePageState extends State<AboutMePage> {
     super.dispose();
     _scrollController.dispose();
   }
-
-
 }

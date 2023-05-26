@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/utils/app_colors.dart';
-import 'package:portfolio/utils/logger.dart';
 
 class ShimmerEffect extends StatefulWidget {
   final double width;
