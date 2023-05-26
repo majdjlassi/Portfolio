@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/data/model/project.dart';
 import 'package:portfolio/presentation/widgets/cached_picture.dart';
 import 'package:portfolio/presentation/widgets/cached_svg_picture.dart';
+import 'package:portfolio/presentation/widgets/shimmer_effect_animation.dart';
 import 'package:portfolio/utils/resuable_widgets.dart';
 import 'package:portfolio/utils/ui_extension.dart';
 
@@ -29,6 +30,13 @@ class _ProjectPageState extends State<ProjectPage> {
                 imageUrl: widget.project.icon!,
                 width: 64.w,
                 height: 64.w,
+                placeHolder: ShimmerEffect(
+                  width: 64.w,
+                  height: 64.w,
+                ),
+                error: (error) {
+                  return const Placeholder();
+                },
               ),
               SizedBox(
                 width: 8.w,
@@ -117,6 +125,13 @@ class _ProjectPageState extends State<ProjectPage> {
         borderRadius: BorderRadius.circular(16.w),
         fit: BoxFit.scaleDown,
         backgroundColor: Colors.white,
-        border: Border.all(color: Theme.of(context).colorScheme.primary),
+        border: Border.all(color: context.primaryColor),
+        placeHolder: ShimmerEffect(
+          width: 0.5.sw,
+          height: 0.5.sh,
+        ),
+        error: (error) {
+          return const Placeholder();
+        },
       );
 }

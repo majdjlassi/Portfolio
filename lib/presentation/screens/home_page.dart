@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/data/model/personal_info.dart';
+import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_cubit.dart';
+import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_state.dart';
+import 'package:portfolio/presentation/widgets/cached_picture.dart';
+import 'package:portfolio/presentation/widgets/link_tile.dart';
+import 'package:portfolio/presentation/widgets/shimmer_effect_animation.dart';
 import 'package:portfolio/utils/app_colors.dart';
+import 'package:portfolio/utils/resuable_widgets.dart';
 import 'package:portfolio/utils/ui_extension.dart';
 import 'package:portfolio/presentation/widgets/clipper/custom_edge_clipper.dart';
 
@@ -19,33 +27,46 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(0.25.sh),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h) +
               EdgeInsets.only(top: 32.h),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(130.w),
-                child: SizedBox(
-                  width: 130.w,
-                  height: 130.w,
-                  child: Image.asset(
-                    'assets/images/my_picture.jpeg',
-                  ),
+          child: BlocBuilder<PersonalInfoCubit, PersonalInfoState>(
+            builder: (context, state) => switch (state) {
+              PersonalInfoStateLoading() => Container(),
+              PersonalInfoStateSuccess() => Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(130.w),
+                      child: SizedBox(
+                        width: 130.w,
+                        height: 130.w,
+                        child: CachedPicture(
+                          imageUrl: state.data.picture,
+                          placeHolder: const ShimmerEffect(
+                              width: double.infinity, height: double.infinity),
+                          error: (error) => const Placeholder(),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 24.w,
+                    ),
+                    Expanded(
+                      child: Text(
+                        state.data.name,
+                        style:
+                            context.pDisplayMedium!.copyWith(letterSpacing: 5),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              SizedBox(
-                width: 24.w,
-              ),
-              Text(
-                'MAJD\nJLASSI',
-                style: context.pDisplayMedium!.copyWith(letterSpacing: 5),
-              ),
-            ],
+              PersonalInfoStateFailed() => Container(),
+            },
           ),
         ),
       ),
@@ -56,85 +77,118 @@ class _HomePageState extends State<HomePage>
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              color: Theme.of(context).primaryColor,
+              color: context.primaryColor,
             ),
           ),
           SizedBox(
             width: 0.78.sw,
-            height: double.infinity,
+            height: 0.60.sh,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 32.h,
-                  ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/images/ic_coding.svg',
-                      ),
-                      SizedBox(
-                        width: 16.w,
-                      ),
-                      Flexible(
-                        child: Text(
-                          'Mobile App Developer',
-                          style: context.sBodyLarge!.copyWith(
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 2.0,
-                          ),
+              child: BlocBuilder<PersonalInfoCubit, PersonalInfoState>(
+                builder: (context, state) => switch (state) {
+                  PersonalInfoStateLoading() => Container(),
+                  PersonalInfoStateSuccess() => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 32.h,
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 32.h,
-                  ),
-                  Text(
-                    '''Flutter/Android Developer with 5 years of experience designing and developing native and cross-platform mobile applications. Proficient in leveraging the Flutter framework to create robust and visually appealing user interfaces while ensuring seamless performance and responsiveness. Strong understanding of the mobile app development lifecycle, Agile methodologies, and UI/UX design principles. Capable of collaborating with cross-functional teams to deliver exceptional user experiences. Committed to staying current on the latest trends and technologies in the Flutter ecosystem.''',
-                    textAlign: TextAlign.justify,
-                    style: context.sBodyLarge!
-                        .copyWith(height: 1.2.sp, letterSpacing: 1.sp),
-                  ),
-                  const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 0.2.sw,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'EXPERIENCES',
-                            style: context.sBodyLarge!
-                                .copyWith(color: AppColors.white[200]),
-                          ),
-                          SizedBox(
-                            height: 16.h,
-                          ),
-                          AnimatedBuilder(
-                            animation: widget.animation,
-                            builder: (context, child) {
-                              return Transform.translate(
-                                  offset:
-                                      Offset(0, widget.animation.value * 50.0),
-                                  child: SvgPicture.asset(
-                                      'assets/images/ic_down_arrow.svg'));
-                            },
-                          ),
-                          SizedBox(
-                            height: 16.h,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/images/ic_coding.svg',
+                            ),
+                            SizedBox(
+                              width: 16.w,
+                            ),
+                            Flexible(
+                              child: Text(
+                                state.data.position,
+                                style: context.sBodyLarge!.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        Text(
+                          state.data.bio,
+                          textAlign: TextAlign.justify,
+                          style: context.sBodyLarge,
+                        ),
+                        const Spacer(),
+                        LinkTile(
+                            svgAsset: 'assets/images/ic_email.svg',
+                            label: state.data.email,
+                            link: 'data.githubUrl'),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        LinkTile(
+                            svgAsset: 'assets/images/ic_address.svg',
+                            label: state.data.address,
+                            link: 'data.linkedinUrl'),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        LinkTile(
+                            svgAsset: 'assets/images/ic_mobile.svg',
+                            label: state.data.number,
+                            link: 'data.linkedinUrl'),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        LinkTile(
+                            svgAsset: 'assets/images/ic_github.svg',
+                            label: 'Github',
+                            link: state.data.githubUrl),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        LinkTile(
+                            svgAsset: 'assets/images/ic_linkedin.svg',
+                            label: 'Linkedin',
+                            link: state.data.linkedinUrl),
+                      ],
+                    ),
+                  PersonalInfoStateFailed() => Container(),
+                },
               ),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            left: 0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'EXPERIENCES',
+                  style:
+                      context.sBodyLarge!.copyWith(color: AppColors.white[200]),
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                AnimatedBuilder(
+                  animation: widget.animation,
+                  builder: (context, child) {
+                    return Transform.translate(
+                        offset: Offset(0, widget.animation.value * 50.0),
+                        child: SvgPicture.asset(
+                            'assets/images/ic_down_arrow.svg'));
+                  },
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+              ],
             ),
           ),
           Positioned(
@@ -148,7 +202,7 @@ class _HomePageState extends State<HomePage>
                   child: Text(
                     'ABOUT ME',
                     style: context.pBodyLarge!
-                        .copyWith(color: Theme.of(context).primaryColor),
+                        .copyWith(color: context.primaryColor),
                   ),
                 ),
                 SizedBox(
@@ -162,7 +216,7 @@ class _HomePageState extends State<HomePage>
                       child: SvgPicture.asset(
                         'assets/images/ic_right_arrow.svg',
                         colorFilter: ColorFilter.mode(
-                            Theme.of(context).primaryColor, BlendMode.modulate),
+                            context.primaryColor, BlendMode.modulate),
                       ),
                     );
                   },

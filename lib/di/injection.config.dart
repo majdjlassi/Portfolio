@@ -50,7 +50,7 @@ _i1.GetIt $initGetIt(
       () => _i7.PersonalInfoRepository(gh<_i5.BackendServiceApi>()));
   gh.factory<_i8.ExperienceCubit>(
       () => _i8.ExperienceCubit(gh<_i6.ExperienceRepository>()));
-  gh.factory<_i9.PersonalInfoCubit>(
+  gh.lazySingleton<_i9.PersonalInfoCubit>(
       () => _i9.PersonalInfoCubit(gh<_i7.PersonalInfoRepository>()));
   return getIt;
 }

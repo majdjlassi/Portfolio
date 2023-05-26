@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/data/model/experience.dart';
 import 'package:portfolio/presentation/screens/project_page.dart';
 import 'package:portfolio/presentation/widgets/cached_svg_picture.dart';
+import 'package:portfolio/presentation/widgets/shimmer_effect_animation.dart';
 import 'package:portfolio/utils/ui_extension.dart';
 import 'package:portfolio/presentation/widgets/page_view_swipe_indicator.dart';
 
@@ -54,7 +55,7 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: context.primaryColor,
       body: Stack(
         children: [
           Padding(
@@ -98,13 +99,20 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
                         width: 88.w,
                         height: 88.w,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.background,
+                          color: context.backgroundColor,
                           borderRadius: BorderRadius.all(Radius.circular(16.w)),
                         ),
                         child: Center(
                           child: CachedSvgPicture(
                             imageUrl: widget.experience.logo,
                             width: 64.w,
+                            placeHolder: ShimmerEffect(
+                              width: 64.w,
+                              height: 64.w,
+                            ),
+                            error: (error) {
+                              return const Placeholder();
+                            },
                           ),
                         ),
                       ),
@@ -145,7 +153,7 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
                 width: double.infinity,
                 height: 0.70.sh,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.background,
+                  color: context.backgroundColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16.w),
                     topRight: Radius.circular(16.w),
@@ -156,11 +164,10 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
                     PageViewSwipeIndicator(
                       activeIndex: activeIndex,
                       itemCount: widget.experience.projects.length,
-                      activeColor: Theme.of(context).colorScheme.primary,
-                      inactiveColor: Theme.of(context).colorScheme.background,
-                      activeBorderColor: Theme.of(context).colorScheme.primary,
-                      inactiveBorderColor:
-                          Theme.of(context).colorScheme.primary,
+                      activeColor: context.primaryColor,
+                      inactiveColor: context.backgroundColor,
+                      activeBorderColor: context.primaryColor,
+                      inactiveBorderColor: context.primaryColor,
                     ),
                     Expanded(
                       child: PageView.builder(

@@ -7,24 +7,27 @@ class CachedSvgPicture extends StatelessWidget {
   final String imageUrl;
   final double? width;
   final double? height;
+  final Widget placeHolder;
+  final Widget Function(dynamic) error;
 
   const CachedSvgPicture({
     Key? key,
     required this.imageUrl,
     this.width,
     this.height,
+    required this.placeHolder,
+    required this.error,
   }) : super(key: key);
 
-  //TODO: handle the place holder and error widget
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: DefaultCacheManager().getSingleFile(imageUrl),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return placeHolder;
         } else if (snapshot.hasError) {
-          return const Icon(Icons.error);
+          return error(snapshot.error);
         } else if (snapshot.hasData) {
           final svgFile = snapshot.data!;
           return SvgPicture.file(

@@ -5,9 +5,12 @@ import 'package:get_it/get_it.dart';
 import 'package:portfolio/data/model/experience.dart';
 import 'package:portfolio/presentation/cubit/experience_cubit/experience_cubit.dart';
 import 'package:portfolio/presentation/cubit/experience_cubit/experience_state.dart';
+import 'package:portfolio/presentation/widgets/animated_dot_loading_widget.dart';
+import 'package:portfolio/presentation/widgets/failed_widget.dart';
 import 'package:portfolio/utils/routes.dart';
 import 'package:portfolio/presentation/widgets/experience_tile.dart';
 import 'package:portfolio/presentation/widgets/portfolio_app_bar.dart';
+import 'package:portfolio/utils/ui_extension.dart';
 
 class ExperiencePage extends StatefulWidget {
   final Animation<double> animation;
@@ -31,7 +34,7 @@ class _ExperiencePageState extends State<ExperiencePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: context.primaryColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(0.3.sh),
         child: PortfolioAppBar(
@@ -45,9 +48,22 @@ class _ExperiencePageState extends State<ExperiencePage> {
       body: BlocBuilder<ExperienceCubit, ExperienceState>(
         bloc: cubit,
         builder: (context, state) => switch (state) {
-          ExperienceStateLoading() => Container(),
+          ExperienceStateLoading() => Center(
+              child: AnimatedDotsLoadingWidget(
+                dotColor: context.backgroundColor,
+                dotSpacing: 4.w,
+                dotSize: 12.w,
+              ),
+            ),
           ExperienceStateSuccess() => successWidget(state.data),
-          ExperienceStateFailed() => Container(),
+          ExperienceStateFailed() => FailedStateWidget(
+              errorText: 'Oops! Something went wrong.',
+              errorTextStyle: context.pHeadlineSmall!
+                  .copyWith(color: context.backgroundColor),
+              icon: Icons.error_outline,
+              iconColor: context.backgroundColor,
+              iconSize: 88.w,
+            ),
         },
       ),
     );
@@ -69,7 +85,7 @@ class _ExperiencePageState extends State<ExperiencePage> {
         },
         separatorBuilder: (BuildContext context, int index) {
           return Divider(
-            color: Theme.of(context).colorScheme.background.withOpacity(0.4),
+            color: context.backgroundColor.withOpacity(0.4),
             indent: 88.w,
             endIndent: 16.w,
             thickness: 1.h,

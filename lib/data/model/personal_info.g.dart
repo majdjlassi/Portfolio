@@ -20,6 +20,8 @@ PersonalInfo _$PersonalInfoFromJson(Map<String, dynamic> json) => PersonalInfo(
       name: json['name'] as String,
       number: json['number'] as String,
       picture: json['picture'] as String,
+      bio: json['bio'] as String,
+      position: json['position'] as String,
       skills:
           (json['skills'] as List<dynamic>).map((e) => e as String).toList(),
     );
@@ -35,6 +37,8 @@ Map<String, dynamic> _$PersonalInfoToJson(PersonalInfo instance) =>
       'name': instance.name,
       'number': instance.number,
       'picture': instance.picture,
+      'bio': instance.bio,
+      'position': instance.position,
       'skills': instance.skills,
     };
 

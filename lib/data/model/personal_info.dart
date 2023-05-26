@@ -15,6 +15,8 @@ class PersonalInfo {
   String name;
   String number;
   String picture;
+  String bio;
+  String position;
   List<String> skills;
 
   PersonalInfo({
@@ -27,6 +29,8 @@ class PersonalInfo {
     required this.name,
     required this.number,
     required this.picture,
+    required this.bio,
+    required this.position,
     required this.skills,
   });
 

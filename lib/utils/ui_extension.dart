@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/utils/app_colors.dart';
 
 extension TextThemeExtension on BuildContext {
+  Color get primaryColor => Theme.of(this).colorScheme.primary;
+  Color get onPrimaryColor => Theme.of(this).colorScheme.onPrimary;
+  Color get secondaryColor => Theme.of(this).colorScheme.secondary;
+  Color get onSecondaryColor => Theme.of(this).colorScheme.onSecondary;
+  Color get errorColor => Theme.of(this).colorScheme.error;
+  Color get onErrorColor => Theme.of(this).colorScheme.onError;
+  Color get backgroundColor => Theme.of(this).colorScheme.background;
+  Color get onBackgroundColor => Theme.of(this).colorScheme.onBackground;
+  Color get surfaceColor => Theme.of(this).colorScheme.surface;
+  Color get onSurfaceColor => Theme.of(this).colorScheme.onSurface;
+  Color get outlineColor => Theme.of(this).colorScheme.outline;
+  Color get shadowColor => Theme.of(this).colorScheme.shadow;
+
   // primary text color - dark
   TextStyle? get pDisplayLarge => Theme.of(this).primaryTextTheme.displayLarge;
 
@@ -35,19 +48,15 @@ extension TextThemeExtension on BuildContext {
 
   TextStyle? get sDisplayLarge => Theme.of(this).textTheme.displayLarge;
 
-  TextStyle? get sDisplayMedium =>
-      Theme.of(this).textTheme.displayMedium;
+  TextStyle? get sDisplayMedium => Theme.of(this).textTheme.displayMedium;
 
   TextStyle? get sDisplaySmall => Theme.of(this).textTheme.displaySmall;
 
-  TextStyle? get sHeadlineLarge =>
-      Theme.of(this).textTheme.headlineLarge;
+  TextStyle? get sHeadlineLarge => Theme.of(this).textTheme.headlineLarge;
 
-  TextStyle? get sHeadlineMedium =>
-      Theme.of(this).textTheme.headlineMedium;
+  TextStyle? get sHeadlineMedium => Theme.of(this).textTheme.headlineMedium;
 
-  TextStyle? get sHeadlineSmall =>
-      Theme.of(this).textTheme.headlineSmall;
+  TextStyle? get sHeadlineSmall => Theme.of(this).textTheme.headlineSmall;
 
   TextStyle? get sLabelLarge => Theme.of(this).textTheme.labelLarge;
 

@@ -41,13 +41,13 @@ class _PortfolioAppBarState extends State<PortfolioAppBar> {
   }
 
   Color get primaryThemeColor => switch (widget.portfolioAppBarTheme) {
-        PortfolioAppBarTheme.light => Theme.of(context).colorScheme.background,
-        PortfolioAppBarTheme.dark => Theme.of(context).colorScheme.primary,
+        PortfolioAppBarTheme.light => context.backgroundColor,
+        PortfolioAppBarTheme.dark => context.primaryColor,
       };
 
   Color get secondaryThemeColor => switch (widget.portfolioAppBarTheme) {
-        PortfolioAppBarTheme.light => Theme.of(context).colorScheme.primary,
-        PortfolioAppBarTheme.dark => Theme.of(context).colorScheme.background,
+        PortfolioAppBarTheme.light => context.primaryColor,
+        PortfolioAppBarTheme.dark => context.backgroundColor,
       };
 
   @override

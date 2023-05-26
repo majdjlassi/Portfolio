@@ -4,7 +4,7 @@ import 'package:portfolio/data/repositories/personal_info_repository.dart';
 import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_state.dart';
 import 'package:portfolio/utils/logger.dart';
 
-@injectable
+@lazySingleton
 class PersonalInfoCubit extends Cubit<PersonalInfoState> {
   final PersonalInfoRepository _repository;
 
