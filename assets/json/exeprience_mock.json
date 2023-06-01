@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "companyName": "Midge Medical GmbH",
+    "location": "Berlin",
+    "position": "Flutter Developer",
+    "start_date": "01-07-2022",
+    "end_date": "Present",
+    "logo": "assets/logo/midge_medical_logo.svg",
+    "projects": [
+      {
+        "name": "Minoo",
+        "icon": "assets/icons/icon-momi.svg",
+        "description": "I worked on a project called Minoo which is a molecular test device used to identify the genetic signature of viruses and display it is result in a few minutes via a Mobile Application.",
+        "images": [
+          "assets/projects/minoo.png",
+          "assets/projects/minoo2.png",
+          "assets/projects/minoo3.png",
+          "assets/projects/minoo4.png",
+          "assets/projects/minoo5.png"
+        ],
+        "achievements": "<ul style=\"list-style-type:square;\">   <li>Contributed to the migration from MVVM to Bloc Pattern.</li>  <li>Fixing a high priority bugs related to the connection between the mobile app and the device using NFC and Bluetooth.</li>   <li>Collaborated closely with UX/UI designers to redesign the whole app and create intuitive and visually appealing user interfaces while ensuring high performance and responsiveness.</li>   <li>Integrated RESTful APIs and implemented data persistence using Dio and Floor libraries.</li>   <li>Write and executed unit, widget and golden tests.</li>    <li>Used our pipelines(GitLab CI/CD) to perform code quality check (flutter lints), execute tests, build and deploy on Firebase App Distribution</li>    <li>Conducted code reviews, identified areas for improvement, and provided constructive feedback to team members.</li>  </ul>",
+        "technologies": [
+          "Flutter SDK",
+          "nfc_manager(NFC)",
+          "flutter_reactive_ble(Bluetooth)",
+          "Firebase Services",
+          "rxDart",
+          "Architecture (clean Architecture + Bloc Pattern)",
+          "Dio",
+          "Floor",
+          "Get_it",
+          "Freezed"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "companyName": "Value Digital Services",
+    "location": "Tunis",
+    "position": "Android Developer",
+    "start_date": "01-02-2021",
+    "end_date": "30-03-2022",
+    "logo": "assets/logo/value_logo.svg",
+    "projects": [
+      {
+        "name": "MyBiat",
+        "icon": "assets/icons/icon-my-biat.svg",
+        "description": "I Worked on a mobile banking application called MyBiat, it's set to provide users with\nconvenient access to their financial accounts and perform various banking transactions securely and efficiently.",
+        "images": [
+          "assets/projects/my-biat.jpg",
+          "assets/projects/my-biat2.jpg",
+          "assets/projects/my-biat3.jpg",
+          "assets/projects/my-biat4.jpg"
+        ],
+        "achievements": "<ul style=\"list-style-type:square;\"><li>Developed and maintained a native android application using a banking solution called Backbase, ensuring high performance, security, and code quality.</li><li>Collaborated with backend developers to define and implement APIs for seamlessdata exchange.</li><li>Collaborated with UX/UI designer and product owner to create user interfaces and to implement custom UI components and animations to enhance the user experience.</li><li>Working closely with the QA team to resolve issues and to maintain the app stability.</li><li>Wrote and executed Unit and UI test.</li><li>Used our pipeline(jenkins) to perform code quality check(sonar cube), execute the Unit and UI tests, build the application(Fastlane), deploy on appCenter.</li><li>Worked in an Agile development environment, participating in daily stand-ups,refinement, sprint planning, sprint review, retrospective and code reviews.</li></ul>",
+        "technologies": [
+          "Android SDK",
+          "Backbase SDK",
+          "Firebase Cloud Messaging",
+          "Model-View-Presenter",
+          "rxJava"
+        ]
+      },
+      {
+        "name": "My Biat Corporate",
+        "icon": "assets/icons/icon-my-biat-corporate.svg",
+        "description": "I Worked on a Mobile banking application for corporates, allowing to confirm the transactions of approval/rejection of batches made from the Web application.",
+        "images": [
+          "assets/projects/my-biat-corporate.png",
+          "assets/projects/my-biat-corporate2.png",
+          "assets/projects/my-biat-corporate3.png",
+          "assets/projects/my-biat-corporate4.png",
+          "assets/projects/my-biat-corporate5.png"
+        ],
+        "achievements": "<ul style=\"list-style-type:square;\"><li>Developed and maintained a native android application using a banking solution called Backbase, ensuring high performance, security, and code quality.</li><li>Collaborated with backend developers to define and implement APIs for seamlessdata exchange.</li><li>Collaborated with UX/UI designer and product owner to create user interfaces and to implement custom UI components and animations to enhance the user experience.</li><li>Working closely with the QA team to resolve issues and to maintain the app stability.</li><li>Wrote and executed Unit and UI test.</li><li>Used our pipeline(jenkins) to perform code quality check(sonar cube), execute the Unit and UI tests, build the application(Fastlane), deploy on appCenter.</li><li>Worked in an Agile development environment, participating in daily stand-ups,refinement, sprint planning, sprint review, retrospective and code reviews.</li></ul>",
+        "technologies": [
+          "Android SDK",
+          "Backbase SDK",
+          "Firebase Cloud Messaging",
+          "Model-View-Presenter",
+          "rxJava"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "companyName": "Ai Square",
+    "location": "Tunis",
+    "position": "Flutter Developer",
+    "start_date": "01-12-2019",
+    "end_date": "30-01-2021",
+    "logo": "assets/logo/ai-square-logo.svg",
+    "projects": [
+      {
+        "name": "Momi",
+        "description": "I worked on a Project called Momi which is a platform for linking service providers and owners of real estate assets. The mobile app allows owners to make/manage services or construction work requests.",
+        "images": [],
+        "achievements": "<ul style=\"list-style-type:square;\">   <li>Contributed to the development of Flutter applications, delivering features and enhancements within tight deadlines.</li>  <li>Collaborated with backend developers to define and implement APIs(ex: implement oauth 2 authentication using an authentication server called keycloak).</li>   <li>Collaborated with UX/UI designer and product owner to create user interfaces.</li>   <li>Worked Closely with the QA team to resolve issues.</li>   <li>preparing and presenting demo to our customer at the end of every sprint.</li>    <li>Actively participated in Agile ceremonies, including sprint planning, backlog grooming, and retrospective meetings.</li></ul>",
+        "technologies": [
+          "Flutter SDK",
+          "Bloc Pattern",
+          "Firebase Cloud Messaging",
+          "RxDart",
+          "Dio",
+          "Hive",
+          "Freezed"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "companyName": "8 Ways Media Sa",
+    "location": "Tunis",
+    "position": "Android Developer",
+    "start_date": "01-02-2019",
+    "end_date": "30-12-2019",
+    "logo": "assets/logo/8-ways-media-logo.svg",
+    "projects": [
+      {
+        "name": "SoWine",
+        "description": "I worked on a project called SoWine which is a wine market place designed to connect and facilitate interactions between various actors in the wine industry, including both individual consumers and professionals.",
+        "images": [],
+        "achievements": "<ul style=\"list-style-type:square;\">   <li>Collaborated with a cross-functional team to design and develop the SoWine Android application, ensuring a seamless and intuitive user experience.</li>  <li>Leveraged the Android SDK, Kotlin and several the new android architecture components to implement robust features, functionalities, and UI components in line with the project requirements</li>   <li>Collaborated closely with backend developers and API engineers to ensure smooth data synchronization and real-time updates between the Android application and the server using Sockets.</li>   <li>Use Camerax Library to create a fully customised camera interface that takes snapshot of the wine bottle and send it to backend to recognise the wine brand.</li>   <li>Collaborated with UX/UI designer to develop interactive and visually appealing user interfaces, optimized for various screen sizes and resolutions.</li></ul>",
+        "technologies": [
+          "Android SDK",
+          "RxKotlin",
+          "Glide",
+          "Retrofit",
+          "Dagger2",
+          "Realm",
+          "LiveData",
+          "ViewModel",
+          "Navigation",
+          "CameraX",
+          "Pager",
+          "MVVM"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "companyName": "Mobiblanc",
+    "location": "Tunis",
+    "position": "Android Developer",
+    "start_date": "01-06-2018",
+    "end_date": "30-12-2018",
+    "logo": "assets/logo/mobiblanc-logo.svg",
+    "projects": [
+      {
+        "name": "Momkin",
+        "description": "I worked on project called Momkin to provide job seekers with tools to\nacquire the required skills and professional attitudes.",
+        "images": [],
+        "achievements": "<ul style=\"list-style-type:square;\">   <li>Collaborated with a cross-functional team to design and develop the Android application, ensuring a seamless and intuitive user experience.</li>  <li>Work Closely with the backend developers to make the app fully customisable via an admin web portal.</li>   <li>Implemented custom UI components and animations to enhance the user experience.</li>   <li>Actively participated in Agile ceremonies, including sprint planning, backlog grooming, and retrospective meetings.</li></ul>",
+        "technologies": [
+          "Android SDK",
+          "RxJava3",
+          "Dagger2",
+          "Retrofit",
+          "Gson",
+          "Glide",
+          "ButterKnife",
+          "Mode-View-Presenter"
+        ]
+      }
+    ]
+  }
+]

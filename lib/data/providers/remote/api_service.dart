@@ -15,5 +15,5 @@ abstract class ApiService {
   Future<List<Experience>> getExperiences();
 
   @GET("/personal_info.json")
-  Future<PersonalInfo> getPersonelInfo();
+  Future<PersonalInfo> getPersonalInfo();
 }

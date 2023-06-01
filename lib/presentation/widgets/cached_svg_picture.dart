@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get_it/get_it.dart';
 
 class CachedSvgPicture extends StatelessWidget {
   final String imageUrl;
@@ -22,7 +23,7 @@ class CachedSvgPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: DefaultCacheManager().getSingleFile(imageUrl),
+      future: GetIt.I<BaseCacheManager>().getSingleFile(imageUrl),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return placeHolder;

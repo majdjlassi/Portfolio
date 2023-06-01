@@ -20,6 +20,7 @@ class PersonalInfoCubit extends Cubit<PersonalInfoState> {
 
   void getPersonalInfo() async {
     emit(PersonalInfoStateLoading());
+    await Future.delayed(const Duration(seconds: 3));
     try {
       final data = await _repository.getPersonalInfo();
       emit(PersonalInfoStateSuccess(data));

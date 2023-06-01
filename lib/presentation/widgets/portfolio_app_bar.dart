@@ -12,6 +12,9 @@ class PortfolioAppBar extends StatefulWidget {
   final String title;
   final String? upperPageTitle;
 
+  static String upperTitleKey = 'upperTitleKey';
+  static String titleKey = 'titleKey';
+
   const PortfolioAppBar(
       {Key? key,
       required this.animation,
@@ -94,6 +97,7 @@ class _PortfolioAppBarState extends State<PortfolioAppBar> {
             ),
             Text(
               widget.upperPageTitle!,
+              key: Key(PortfolioAppBar.upperTitleKey),
               style: context.pBodyLarge!.copyWith(
                 color: secondaryThemeColor,
               ),
@@ -106,6 +110,7 @@ class _PortfolioAppBarState extends State<PortfolioAppBar> {
             children: [
               Text(
                 widget.title,
+                key: Key(PortfolioAppBar.titleKey),
                 style: context.pDisplayMedium!.copyWith(
                   letterSpacing: 2,
                   fontWeight: FontWeight.w900,

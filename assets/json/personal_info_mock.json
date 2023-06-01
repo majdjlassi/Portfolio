@@ -1,0 +1,52 @@
+{
+  "name": "Majd Jlassi",
+  "picture": "/link",
+  "address": "Charlotte-E.-Pauly-Straße 16, 12587 Berlin",
+  "email": "jlmajd3@gmail.com",
+  "number": "+49 175 3731344",
+  "bio": "Bio...",
+  "position": "Mobile Application Developer",
+  "education": [
+    {
+      "degree": "LICENSE DEGREE IN COMPUTER SCIENCE",
+      "university": "The Higher Institute of Information Technologies and Communication",
+      "address": "Ben Arous, Tunisia",
+      "start_date": "01-09-2014",
+      "end_date": "20-05-2017"
+    }
+  ],
+  "skills": [
+    "FLUTTER SDK",
+    "DART",
+    "ANDROID SDK",
+    "KOTLIN",
+    "RESTFUL API",
+    "FIREBASE SERVICES",
+    "FLUTTER STATE MANAGEMENT (BLOC)",
+    "UNIT/WIDGET/GOLDEN TEST",
+    "UX/UI DESIGN",
+    "AGILE(SCRUM)",
+    "GIT VERSION CONTROL",
+    "CI/CD"
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "level": "1.0"
+    },
+    {
+      "language": "Arabic",
+      "level": "1.0"
+    },
+    {
+      "language": "French",
+      "level": "0.60"
+    },
+    {
+      "language": "German",
+      "level": "0.10"
+    }
+  ],
+  "linkedin_url": "https://www.linkedin.com/in/majd-jlassi-017915147/",
+  "github_url": "https://github.com/majdjlassi"
+}

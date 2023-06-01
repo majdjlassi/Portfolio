@@ -203,17 +203,6 @@ class _HomePageState extends State<HomePage>
                             SizedBox(
                               height: 32.h,
                             ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 16.w),
-                              child: Text(
-                                'Contact',
-                                style: context.pHeadlineSmall!
-                                    .copyWith(color: context.backgroundColor),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 24.h,
-                            ),
                             LinkTile(
                               svgAsset: 'assets/images/ic_email.svg',
                               label: state.data.email,

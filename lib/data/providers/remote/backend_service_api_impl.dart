@@ -23,6 +23,6 @@ class BackendServiceApiImpl implements BackendServiceApi {
 
   @override
   Future<PersonalInfo> getPersonalInfo() {
-    return apiService.getPersonelInfo();
+    return apiService.getPersonalInfo();
   }
 }

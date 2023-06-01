@@ -47,7 +47,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<PersonalInfo> getPersonelInfo() async {
+  Future<PersonalInfo> getPersonalInfo() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

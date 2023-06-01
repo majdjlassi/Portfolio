@@ -158,9 +158,9 @@ class MyApp extends StatelessWidget {
                     minimumSize:
                         MaterialStateProperty.all<Size>(Size(0.5.sw, 56.h)),
                     backgroundColor: MaterialStateProperty.all<Color>(
-                        AppColors.colorScheme.background),
-                    foregroundColor: MaterialStateProperty.all<Color>(
                         AppColors.colorScheme.primary),
+                    overlayColor: MaterialStateProperty.all<Color>(
+                        AppColors.colorScheme.background.withOpacity(0.2)),
                     shape: MaterialStateProperty.all(
                       const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero,
