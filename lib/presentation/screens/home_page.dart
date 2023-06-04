@@ -1,11 +1,12 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_cubit.dart';
 import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_state.dart';
+import 'package:portfolio/presentation/cubit/resume_cubit/resume_cubit.dart';
+import 'package:portfolio/presentation/cubit/resume_cubit/resume_state.dart';
 import 'package:portfolio/presentation/widgets/cached_picture.dart';
 import 'package:portfolio/presentation/widgets/link_tile.dart';
 import 'package:portfolio/presentation/widgets/shimmer_effect_animation.dart';
@@ -26,13 +27,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<ResumeCubit>(context).checkResumeAvailibity();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(0.25.sh),
+        preferredSize: Size.fromHeight(0.18.sh),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h) +
               EdgeInsets.only(top: 32.h),
@@ -40,29 +48,57 @@ class _HomePageState extends State<HomePage>
             builder: (context, state) => switch (state) {
               PersonalInfoStateLoading() => Container(),
               PersonalInfoStateSuccess() => Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(130.w),
-                      child: SizedBox(
-                        width: 130.w,
-                        height: 130.w,
-                        child: CachedPicture(
-                          imageUrl: state.data.picture,
-                          placeHolder: const ShimmerEffect(
-                              width: double.infinity, height: double.infinity),
-                          error: (error) => const Placeholder(),
-                        ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 88.w,
+                            height: double.maxFinite,
+                            child: CachedPicture(
+                              imageUrl: state.data.picture,
+                              backgroundColor: context.primaryColor,
+                              border: Border.all(
+                                  color: context.primaryColor, width: 2.w),
+                              fit: BoxFit.cover,
+                              placeHolder: const ShimmerEffect(
+                                  width: double.infinity,
+                                  height: double.infinity),
+                              error: (error) => const Placeholder(),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 16.w,
+                          ),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  state.data.name,
+                                  style: context.pHeadlineSmall!.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 3),
+                                ),
+                                SizedBox(
+                                  height: 8.h,
+                                ),
+                                _downloadResumeButton(state),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(
-                      width: 24.w,
-                    ),
-                    Expanded(
-                      child: Text(
-                        state.data.name,
-                        style:
-                            context.pDisplayMedium!.copyWith(letterSpacing: 5),
+                      width: 0.20.sw,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.settings,
+                          color: context.primaryColor,
+                        ),
                       ),
                     ),
                   ],
@@ -90,7 +126,7 @@ class _HomePageState extends State<HomePage>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'EXPERIENCES',
+                  'EXPERIENCE',
                   style:
                       context.sBodyLarge!.copyWith(color: AppColors.white[200]),
                 ),
@@ -253,6 +289,59 @@ class _HomePageState extends State<HomePage>
       ),
     );
   }
+
+  Widget _downloadResumeButton(PersonalInfoStateSuccess personalInfoState) =>
+      BlocBuilder<ResumeCubit, ResumeState>(
+        builder: (context, state) => switch (state) {
+          ResumeInitialState() => ElevatedButton.icon(
+              onPressed: () {
+                BlocProvider.of<ResumeCubit>(context).downloadResume(personalInfoState.data.resumeUrl);
+              },
+              label: Text(
+                'Download C.v',
+                style: context.sLabelSmall,
+              ),
+              icon: Icon(
+                Icons.cloud_download_outlined,
+                color: context.backgroundColor,
+                size: 24.w,
+              ),
+            ),
+          ResumeDownloadLoadingState() => ElevatedButton(
+              onPressed: null,
+              child: CircularProgressIndicator(
+                color: context.backgroundColor,
+              )),
+          ResumeDownloadFailedState() => ElevatedButton.icon(
+              onPressed: () {
+                BlocProvider.of<ResumeCubit>(context).downloadResume(personalInfoState.data.resumeUrl);
+              },
+              label: Text(
+                'Retry',
+                style: context.sLabelSmall,
+              ),
+              icon: Icon(
+                Icons.error_outline,
+                color: context.backgroundColor,
+                size: 24.w,
+              ),
+            ),
+          ResumeDownloadedState() => ElevatedButton.icon(
+              onPressed: () {
+                BlocProvider.of<ResumeCubit>(context).openResume();
+              },
+              label: Text(
+                'Open C.v',
+                style: context.sLabelSmall,
+              ),
+              icon: Icon(
+                Icons.open_in_new_rounded,
+                color: context.backgroundColor,
+                size: 24.w,
+              ),
+            ),
+        },
+      );
 
   void _openMapWithAddress(String address) async {
     String encodedAddress = Uri.encodeComponent(address);

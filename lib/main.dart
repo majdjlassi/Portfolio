@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
+import 'package:portfolio/data/providers/local/database_config.dart';
 import 'package:portfolio/di/injection.dart';
+import 'package:portfolio/presentation/cubit/experience_cubit/experience_cubit.dart';
 import 'package:portfolio/presentation/cubit/personal_info_cubit/personal_info_cubit.dart';
+import 'package:portfolio/presentation/cubit/resume_cubit/resume_cubit.dart';
 import 'package:portfolio/presentation/screens/splash_screen.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+  DatabaseConfig.init();
   runApp(const MyApp());
 }
 
@@ -18,8 +23,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => GetIt.I<PersonalInfoCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<PersonalInfoCubit>(create: (_) => GetIt.I<PersonalInfoCubit>(),),
+        BlocProvider<ExperienceCubit>(create: (_) => GetIt.I<ExperienceCubit>(),),
+        BlocProvider<ResumeCubit>(create: (_) => GetIt.I<ResumeCubit>(),),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(390, 844),
         minTextAdapt: true,

@@ -68,7 +68,7 @@ class _ProjectPageState extends State<ProjectPage> {
               scrollDirection: Axis.horizontal,
               itemCount: widget.project.images!.length,
               itemBuilder: (BuildContext context, int index) =>
-                  roundedImage(widget.project.images![index]),
+                  _image(widget.project.images![index]),
             ),
           ),
           SizedBox(
@@ -117,15 +117,13 @@ class _ProjectPageState extends State<ProjectPage> {
     );
   }
 
-  Widget roundedImage(String imageUrl) => CachedPicture(
+  Widget _image(String imageUrl) => CachedPicture(
         imageUrl: imageUrl,
         width: 0.5.sw,
         height: 0.5.sh,
         margin: EdgeInsets.only(right: 24.w),
-        borderRadius: BorderRadius.circular(16.w),
         fit: BoxFit.scaleDown,
-        backgroundColor: Colors.white,
-        border: Border.all(color: context.primaryColor),
+        backgroundColor: context.backgroundColor,
         placeHolder: ShimmerEffect(
           width: 0.5.sw,
           height: 0.5.sh,

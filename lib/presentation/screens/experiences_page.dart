@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_it/get_it.dart';
 import 'package:portfolio/data/model/experience.dart';
 import 'package:portfolio/presentation/cubit/experience_cubit/experience_cubit.dart';
 import 'package:portfolio/presentation/cubit/experience_cubit/experience_state.dart';
@@ -23,12 +22,10 @@ class ExperiencePage extends StatefulWidget {
 
 class _ExperiencePageState extends State<ExperiencePage> {
   final _scrollController = ScrollController();
-  final cubit = GetIt.I<ExperienceCubit>();
-
   @override
   void initState() {
     super.initState();
-    cubit.fetchExperiences();
+    BlocProvider.of<ExperienceCubit>(context).fetchExperiences();
   }
 
   @override
@@ -46,7 +43,6 @@ class _ExperiencePageState extends State<ExperiencePage> {
         ),
       ),
       body: BlocBuilder<ExperienceCubit, ExperienceState>(
-        bloc: cubit,
         builder: (context, state) => switch (state) {
           ExperienceStateLoading() => Center(
               child: AnimatedDotsLoadingWidget(

@@ -65,6 +65,7 @@ class CachedPicture extends StatelessWidget {
             margin: margin,
             decoration: BoxDecoration(
               color: backgroundColor,
+              border: border,
               image: DecorationImage(
                 image: FileImage(file),
                 fit: fit,
