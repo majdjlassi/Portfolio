@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/data/model/experience.dart';
+import 'package:portfolio/presentation/cubit/page_view_cubit/page_view_cubit_cubit.dart';
+import 'package:portfolio/presentation/cubit/page_view_cubit/page_view_cubit_state.dart';
 import 'package:portfolio/presentation/screens/project_page.dart';
 import 'package:portfolio/presentation/widgets/cached_svg_picture.dart';
 import 'package:portfolio/presentation/widgets/shimmer_effect_animation.dart';
@@ -54,143 +57,150 @@ class _ExperienceDetailsScreenState extends State<ExperienceDetailsScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.primaryColor,
-      body: Stack(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 40.h,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
+    return BlocProvider<PageViewCubit>(
+      create: (_) => PageViewCubit(_pageController.initialPage),
+      child: Scaffold(
+        backgroundColor: context.primaryColor,
+        body: Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 40.h,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/ic_left_arrow.svg',
+                          height: 24.h,
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Text(
+                          'BACK',
+                          style: context.sBodyLarge,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 24.h,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SvgPicture.asset(
-                        'assets/images/ic_left_arrow.svg',
-                        height: 24.h,
+                      Hero(
+                        tag: widget.experience.id,
+                        child: Container(
+                          width: 88.w,
+                          height: 88.w,
+                          decoration: BoxDecoration(
+                            color: context.backgroundColor,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(16.w)),
+                          ),
+                          child: Center(
+                            child: CachedSvgPicture(
+                              imageUrl: widget.experience.logo,
+                              width: 64.w,
+                              placeHolder: ShimmerEffect(
+                                width: 64.w,
+                                height: 64.w,
+                              ),
+                              error: (error) {
+                                return const Placeholder();
+                              },
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
-                        width: 8.w,
+                        width: 16.w,
                       ),
-                      Text(
-                        'BACK',
-                        style: context.sBodyLarge,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              widget.experience.companyName,
+                              style: context.sHeadlineSmall!.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              widget.experience.position,
+                              style: context.sBodyLarge,
+                            ),
+                            Text(widget.experience.duration,
+                                style: context.sBodyLarge),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 24.h,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Hero(
-                      tag: widget.experience.id,
-                      child: Container(
-                        width: 88.w,
-                        height: 88.w,
-                        decoration: BoxDecoration(
-                          color: context.backgroundColor,
-                          borderRadius: BorderRadius.all(Radius.circular(16.w)),
-                        ),
-                        child: Center(
-                          child: CachedSvgPicture(
-                            imageUrl: widget.experience.logo,
-                            width: 64.w,
-                            placeHolder: ShimmerEffect(
-                              width: 64.w,
-                              height: 64.w,
-                            ),
-                            error: (error) {
-                              return const Placeholder();
+                ],
+              ),
+            ),
+            SlideTransition(
+              position: _animation,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: double.infinity,
+                  height: 0.70.sh,
+                  decoration: BoxDecoration(
+                    color: context.backgroundColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16.w),
+                      topRight: Radius.circular(16.w),
+                    ),
+                  ),
+                  child: Builder(builder: (context) {
+                    return Column(
+                      children: [
+                        BlocBuilder<PageViewCubit, PageViewCubitState>(
+                            builder: (context, state) {
+                          return PageViewSwipeIndicator(
+                            activeIndex: state.activeIndex,
+                            itemCount: widget.experience.projects.length,
+                            activeColor: context.primaryColor,
+                            inactiveColor: context.backgroundColor,
+                            activeBorderColor: context.primaryColor,
+                            inactiveBorderColor: context.primaryColor,
+                          );
+                        }),
+                        Expanded(
+                          child: PageView.builder(
+                            controller: _pageController,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: widget.experience.projects.length,
+                            onPageChanged:
+                                BlocProvider.of<PageViewCubit>(context)
+                                    .onPageChanged,
+                            itemBuilder: (context, index) {
+                              return ProjectPage(
+                                  project: widget.experience.projects[index]);
                             },
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 16.w,
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            widget.experience.companyName,
-                            style: context.sHeadlineSmall!.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            widget.experience.position,
-                            style: context.sBodyLarge,
-                          ),
-                          Text(widget.experience.duration,
-                              style: context.sBodyLarge),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          SlideTransition(
-            position: _animation,
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                width: double.infinity,
-                height: 0.70.sh,
-                decoration: BoxDecoration(
-                  color: context.backgroundColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16.w),
-                    topRight: Radius.circular(16.w),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    PageViewSwipeIndicator(
-                      activeIndex: activeIndex,
-                      itemCount: widget.experience.projects.length,
-                      activeColor: context.primaryColor,
-                      inactiveColor: context.backgroundColor,
-                      activeBorderColor: context.primaryColor,
-                      inactiveBorderColor: context.primaryColor,
-                    ),
-                    Expanded(
-                      child: PageView.builder(
-                        controller: _pageController,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: widget.experience.projects.length,
-                        onPageChanged: (index) {
-                          setState(() {
-                            activeIndex = index;
-                          });
-                        },
-                        itemBuilder: (context, index) {
-                          return ProjectPage(
-                              project: widget.experience.projects[index]);
-                        },
-                      ),
-                    ),
-                  ],
+                      ],
+                    );
+                  }),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

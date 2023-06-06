@@ -27,7 +27,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
-
   @override
   void initState() {
     super.initState();
@@ -84,7 +83,7 @@ class _HomePageState extends State<HomePage>
                                 SizedBox(
                                   height: 8.h,
                                 ),
-                                _downloadResumeButton(state),
+                                Flexible(child: _downloadResumeButton(state)),
                               ],
                             ),
                           ),
@@ -295,7 +294,8 @@ class _HomePageState extends State<HomePage>
         builder: (context, state) => switch (state) {
           ResumeInitialState() => ElevatedButton.icon(
               onPressed: () {
-                BlocProvider.of<ResumeCubit>(context).downloadResume(personalInfoState.data.resumeUrl);
+                BlocProvider.of<ResumeCubit>(context)
+                    .downloadResume(personalInfoState.data.resumeUrl);
               },
               label: Text(
                 'Download C.v',
@@ -314,7 +314,8 @@ class _HomePageState extends State<HomePage>
               )),
           ResumeDownloadFailedState() => ElevatedButton.icon(
               onPressed: () {
-                BlocProvider.of<ResumeCubit>(context).downloadResume(personalInfoState.data.resumeUrl);
+                BlocProvider.of<ResumeCubit>(context)
+                    .downloadResume(personalInfoState.data.resumeUrl);
               },
               label: Text(
                 'Retry',

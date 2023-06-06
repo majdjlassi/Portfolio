@@ -25,9 +25,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<PersonalInfoCubit>(create: (_) => GetIt.I<PersonalInfoCubit>(),),
-        BlocProvider<ExperienceCubit>(create: (_) => GetIt.I<ExperienceCubit>(),),
-        BlocProvider<ResumeCubit>(create: (_) => GetIt.I<ResumeCubit>(),),
+        BlocProvider<PersonalInfoCubit>(
+          create: (_) => GetIt.I<PersonalInfoCubit>(),
+        ),
+        BlocProvider<ExperienceCubit>(
+          create: (_) => GetIt.I<ExperienceCubit>(),
+        ),
+        BlocProvider<ResumeCubit>(
+          create: (_) => GetIt.I<ResumeCubit>(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(390, 844),
